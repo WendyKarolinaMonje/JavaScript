@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Fecha Dde nacimiento</title>
+</head>
+<body>
+<br>
+    <label for="fechaNac">SELECCIONE SU FECHA DE NACIMIENTO:</label>
+    <br>
+    <input id="fechaNac" type="date">
+    <br><BR>
+    <label for="edad">LA EDAD ES DE: </label>
+    <br><br>
+    <input id="edad" type="text" size="32">
+    <p id="salida">
+</body>
+<script>
+
+const edad = fechaNac => {
+  if(!fechaNac || isNaN(new Date(fechaNac))) return;
+  const hoy = new Date();
+  const dateNac = new Date(fechaNac);
+  if(hoy - dateNac < 0) return;
+  let dias = hoy.getUTCDate() - dateNac.getUTCDate();
+  let meses = hoy.getUTCMonth() - dateNac.getUTCMonth();
+  let years = hoy.getUTCFullYear() - dateNac.getUTCFullYear();
+  if(dias < 0) {
+    meses--;
+    dias = 30 + dias;
+  }
+  if(meses < 0) {
+    years--;
+    meses = 12 + meses;
+  }
+  
+  return [years, meses, dias];
+}
+
+$('#fechaNac').change(e => {
+  
+  let suEdad = edad(e.currentTarget.value);
+ 
+  if(suEdad) {
+    $('#edad').val(`${suEdad[0]} año(s), ${suEdad[1]} mes(es) y ${suEdad[2]} día(s).`);
+  } else {
+    $('#edad').val('');
+  }
+});
+</script>
+</html>

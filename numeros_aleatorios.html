@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fecha Aleatoria</title>
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>Fecha Aleatoria </h1>
+
+    <button type="submit" class="btn btn-primary"  value="Dia" onclick="dia()">Día</button>
+    <p id="dia"></p>
+
+    <button type="submit" class="btn btn-primary"  value="Mes" onclick="mes()">Mes</button>
+     <p id="mes"></p>
+
+    <button type="submit" class="btn btn-primary"  value="Año" onclick="año()">Año</button>
+     <p id="año"></p>        
+
+    <button type="submit" class="btn btn-primary"  value="Ver" onclick="ver()">Fecha</button>
+    <p id="ver"></p>
+ 
+    
+</body>
+
+<script>
+    var dias = Math.floor(Math.random() * 31) + 1;
+    var meses = Math.floor(Math.random() * 12) + 1;
+    var años = Math.floor(Math.random() * 32) + 1990;
+
+    function dia() {
+        document.getElementById("dia").innerHTML = dias
+    }
+    function mes() {
+        document.getElementById("mes").innerHTML = meses
+    }
+    function año() {
+        document.getElementById("año").innerHTML = años
+    }
+    function ver() {
+        const f = new Date("años", "mes", "dia");
+        f.setFullYear(años, meses-1,dias)
+        document.getElementById("ver").innerHTML = f;
+        
+        
+    }
+</script>
+
+</html>
